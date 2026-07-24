@@ -2,6 +2,18 @@ import re
 import spacy
 
 from functools import lru_cache
+import spacy
+
+# =====================================================
+# LOAD SPACY MODEL
+# =====================================================
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    raise RuntimeError(
+        "The spaCy model 'en_core_web_sm' is not installed."
+    )
 
 from presidio_analyzer import AnalyzerEngine
 from presidio_analyzer.nlp_engine import NlpEngineProvider
