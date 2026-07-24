@@ -251,31 +251,6 @@ The Streamlit dashboard includes:
 
 ---
 
-# 📸 Screenshots
-
-## Home
-
-> *(Add screenshot here)*
-
----
-
-## Upload Document
-
-> *(Add screenshot here)*
-
----
-
-## Analytics Dashboard
-
-> *(Add screenshot here)*
-
----
-
-## Redacted Output
-
-> *(Add screenshot here)*
-
----
 
 # 📁 Output
 
