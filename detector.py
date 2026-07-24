@@ -3,27 +3,30 @@ import spacy
 
 from functools import lru_cache
 
-from presidio_analyzer import (
-    AnalyzerEngine
+from presidio_analyzer import AnalyzerEngine
+from presidio_analyzer.nlp_engine import NlpEngineProvider
+
+# =====================================================
+# PRESIDIO (USE en_core_web_sm INSTEAD OF en_core_web_lg)
+# =====================================================
+
+configuration = {
+    "nlp_engine_name": "spacy",
+    "models": [
+        {
+            "lang_code": "en",
+            "model_name": "en_core_web_sm"
+        }
+    ]
+}
+
+provider = NlpEngineProvider(nlp_configuration=configuration)
+nlp_engine = provider.create_engine()
+
+analyzer = AnalyzerEngine(
+    nlp_engine=nlp_engine,
+    supported_languages=["en"]
 )
-
-# =====================================================
-# LOAD SPACY (SMALL MODEL)
-# =====================================================
-
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    raise RuntimeError(
-        "The spaCy model 'en_core_web_sm' is not installed. "
-        "Please install it through requirements.txt."
-    )
-
-# =====================================================
-# PRESIDIO
-# =====================================================
-
-analyzer = AnalyzerEngine()
 
 # =====================================================
 # FAST REGEX
