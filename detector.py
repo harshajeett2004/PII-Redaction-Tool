@@ -13,19 +13,11 @@ from presidio_analyzer import (
 
 try:
     nlp = spacy.load("en_core_web_sm")
-
-except Exception:
-
-    print(
-        "Downloading spaCy model..."
+except OSError:
+    raise RuntimeError(
+        "The spaCy model 'en_core_web_sm' is not installed. "
+        "Please install it through requirements.txt."
     )
-
-    from spacy.cli import download
-
-    download("en_core_web_sm")
-
-    nlp = spacy.load("en_core_web_sm")
-
 
 # =====================================================
 # PRESIDIO
